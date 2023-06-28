@@ -3,16 +3,18 @@ import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<header>
-  <h2>
-    {SITE_TITLE}
-  </h2>
+<header class="p-3 mb-4 text-center">
+  <a href="/"
+    ><h2
+      class="text-blue font-bold text-xxl hover:drop-shadow-header header-text-shadow transition-all ease-in-out"
+    >
+      {SITE_TITLE}
+    </h2></a
+  >
 </header>
 <style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
+  .header-text-shadow {
+    text-shadow: -1px -1px 0 #ffb5e5, 1px -1px 0 #ffb5e5, -1px 1px 0 #ffb5e5,
+      1px 1px 0 #ffb5e5;
   }
 </style>

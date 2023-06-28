@@ -5,10 +5,17 @@ import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
+import Tag from "../components/Tag.astro";
 
 const posts = (await getCollection("recipes")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+// function getRandomColor() {
+//   const colors = ["purple", "pink", "yellow", "blue-light", "red", "green"];
+//   return colors[Math.floor(Math.random() * colors.length)];
+// }
+// const bgColors = posts.map((p) => getRandomColor());
 ---
 
 <!DOCTYPE html>
@@ -16,36 +23,30 @@ const posts = (await getCollection("recipes")).sort(
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
+  <body class="bg-gray-dark text-gray-dark">
     <Header />
-    <main class="flex justify-center w-full">
-      <section>
-        <ul>
-          {
-            posts.map((post) => (
-              <li class="mx-2">
-                <a href={`/${post.slug}/`}>
-                  <figure>
-                    <img src="http://via.placeholder.com/640x360" alt="" />
-                  </figure>
-                  <div class="">
-                    <h2 class="">{post.data.title}</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
-                    <ul class="">
-                      <li>
-                        <button class="">Tag</button>
-                      </li>
-                      <li>
-                        <button class="">Tag</button>
-                      </li>
-                    </ul>
-                  </div>
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+    <main class="max-w-6xl mx-auto px-2">
+      <ul class="md:columns-2 lg:columns-3 columns-1 gap-4">
+        {
+          posts.map((post) => (
+            <li class="mb-4 border-pink border-8 rounded-md bg-gray-light break-inside-avoid-column hover:drop-shadow-card-hover hover:-translate-y-2 hover:-translate-x-2 transition-all ease-in-out">
+              <a href={`/${post.slug}/`}>
+                <div class="p-3">
+                  <h2 class="font-bold">{post.data.title}</h2>
+                  <p>
+                    If a dog chews shoes whose shoes does he choose?If a dog
+                    chews shoes whose shoes does he choose?
+                  </p>
+                  <ul class="flex flex-wrap">
+                    <Tag />
+                    <Tag />
+                  </ul>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </main>
     <Footer />
   </body>
