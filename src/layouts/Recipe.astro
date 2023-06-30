@@ -8,7 +8,7 @@ type Props = CollectionEntry<"recipes">["data"];
 const { title, pubDate, ingredients } = Astro.props;
 ---
 
-<Base title="Home Page">
+<Base title={title}>
   <article>
     <div
       class="mb-4 p-3 text-center rounded-md bg-gradient-to-br from-pink to-blue"
