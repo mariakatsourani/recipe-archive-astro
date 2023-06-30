@@ -1,6 +1,4 @@
 ---
-import { SITE_BASE } from "../consts";
-
 type TagType = "category" | "cookingTime" | "tag";
 type Props = { name: string; type: TagType };
 const { name, type } = Astro.props;
@@ -13,5 +11,5 @@ const tagColorMap: Record<TagType, string> = {
 ---
 
 <li class=`my-1 mr-1 p-0.5 px-2 rounded-md  text-sm bg-${tagColorMap[type]}`>
-  <a href={`${SITE_BASE}/${name}`}>{name}</a>
+  <a href={`/${name}`}>{name}</a>
 </li>
