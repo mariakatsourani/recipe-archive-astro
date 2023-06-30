@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = "Recipe Archive";
 export const SITE_DESCRIPTION = "Welcome to my website!";
+export const SITE_BASE = "/recipe-archive-astro";

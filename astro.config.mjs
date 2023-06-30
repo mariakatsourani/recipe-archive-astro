@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "mariakatsourani.github.io",
+  base: "/recipe-archive-astro",
   integrations: [mdx(), tailwind()],
 });
