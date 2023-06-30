@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from "../consts";
+import { SITE_TITLE, SITE_BASE } from "../consts";
 import { getCollection } from "astro:content";
 import Tag from "../components/Tag.astro";
 import Base from "../layouts/Base.astro";
@@ -24,7 +24,7 @@ const formatTime = (time: number) => {
     {
       posts.map((post) => (
         <li class="mb-4 border-pink border-8 rounded-md bg-gray-light break-inside-avoid-column hover:drop-shadow-card-hover hover:-translate-y-2 hover:-translate-x-2 transition-all ease-in-out">
-          <a href={`/${post.slug}/`}>
+          <a href={`${SITE_BASE}/${post.slug}/`}>
             <div class="p-3">
               <h2 class="font-bold tracking-wide pb-1 mb-1 border-blue border-b">
                 {post.data.title}
