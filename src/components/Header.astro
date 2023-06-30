@@ -1,16 +1,16 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
 <header class="p-3 mb-4 text-center">
   <a href="/"
-    ><h2
-      class="text-blue font-bold text-xxl hover:drop-shadow-header header-text-shadow transition-all ease-in-out"
+    ><h1
+      class="text-blue font-bold text-xxl tracking-wider hover:drop-shadow-header header-text-shadow transition-all ease-in-out"
     >
       {SITE_TITLE}
-    </h2></a
-  >
+    </h1>
+  </a>
+  <div class="hidden bg-purple bg-red bg-green bg-blue-light"></div>
 </header>
 <style>
   .header-text-shadow {

@@ -5,7 +5,7 @@ import Base from "./Base.astro";
 
 type Props = CollectionEntry<"recipes">["data"];
 
-const { title, pubDate, updatedDate, ingredients } = Astro.props;
+const { title, pubDate, ingredients } = Astro.props;
 ---
 
 <Base title="Home Page">
@@ -13,19 +13,14 @@ const { title, pubDate, updatedDate, ingredients } = Astro.props;
     <div
       class="mb-4 p-3 text-center rounded-md bg-gradient-to-br from-pink to-blue"
     >
-      <h1 class="text-xl font-bold text-transparent bg-clip-text">
+      <h2
+        class="text-xl font-bold text-transparent bg-clip-text tracking-wider"
+      >
         {title}
-      </h1>
+      </h2>
       <FormattedDate date={pubDate} />
     </div>
-    {
-      updatedDate && (
-        <div class="last-updated-on">
-          Last updated on <FormattedDate date={updatedDate} />
-        </div>
-      )
-    }
-    <div class="flex">
+    <div class="flex items-start">
       <div class="w-30% bg-gray-light border-pink border-8 rounded-md mr-4 p-3">
         <h3 class="text-lg mb-2 font-semi-bold">Ingredients</h3>
         <ul>

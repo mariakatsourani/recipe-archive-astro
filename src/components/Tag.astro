@@ -1,4 +1,15 @@
 ---
+type TagType = "category" | "cookingTime" | "tag";
+type Props = { name: string; type: TagType };
+const { name, type } = Astro.props;
+
+const tagColorMap: Record<TagType, string> = {
+  category: "blue-light",
+  cookingTime: "green",
+  tag: "purple",
+};
 ---
 
-<li class="mr-1 mt-1 p-1 bg-sage rounded-md">Tag name</li>
+<li class=`my-1 mr-1 p-0.5 px-2 rounded-md  text-sm bg-${tagColorMap[type]}`>
+  <a href={`/${name}`}>{name}</a>
+</li>
