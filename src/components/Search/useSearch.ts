@@ -1,20 +1,31 @@
 import {
   create,
   insertMultiple,
-  type Document,
+  search,
   type Orama,
   type ProvidedTypes,
 } from "@orama/orama";
 import { useEffect, useState } from "react";
 
-export const useOrama = () => {
+export const useSearch = () => {
   const [db, setDb] = useState<Orama<ProvidedTypes> | undefined>();
 
   const getRecipes = async () => {
     const recipes = await fetch("/search-index");
     const json = await recipes.json();
-    console.log("recipes", json);
-    return json.recipes as Document[];
+    return json?.recipes ?? [];
+  };
+
+  const searchTerm = async (term: string) => {
+    if (db) {
+      const results = await search(db, {
+        term,
+        properties: "*",
+        tolerance: 5,
+      });
+      return results.hits;
+    }
+    return Promise.resolve(undefined);
   };
 
   useEffect(() => {
@@ -23,7 +34,9 @@ export const useOrama = () => {
       const recipeDb = await create({
         schema: {
           title: "string",
+          categories: "string[]",
           tags: "string[]",
+          cookingTime: "number",
           ingredients: "string[]",
           url: "string",
         },
@@ -36,5 +49,5 @@ export const useOrama = () => {
     intitDb();
   }, []);
 
-  return { db };
+  return { search: searchTerm };
 };

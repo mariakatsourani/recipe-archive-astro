@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import type { APIRoute } from "astro";
+import { SITE_BASE } from "../consts";
 
 export const get: APIRoute = async function get() {
   const recipes = await getCollection("recipes");
@@ -8,13 +9,11 @@ export const get: APIRoute = async function get() {
     recipes: recipes.map((recipe) => {
       return {
         title: recipe.data.title,
-        tags: [
-          ...recipe.data.categories,
-          ...recipe.data.tags,
-          recipe.data.cookingTime.toString(),
-        ],
+        categories: recipe.data.categories,
+        tags: recipe.data.tags,
+        cookingTime: recipe.data.cookingTime,
         ingredients: recipe.data.ingredients,
-        url: `/${recipe.slug}`,
+        url: `${SITE_BASE}/${recipe.slug}`,
       };
     }),
   });

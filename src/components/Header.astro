@@ -1,9 +1,8 @@
 ---
 import { SITE_BASE, SITE_TITLE } from "../consts";
-import SearchComponent from "./SearchComponent.astro";
 ---
 
-<header class="p-3 mb-4 text-center">
+<header class="p-3 text-center">
   <a href=`${SITE_BASE}/`
     ><h1
       class="text-blue font-bold text-xxl tracking-wider hover:drop-shadow-header header-text-shadow transition-all ease-in-out"
@@ -12,7 +11,6 @@ import SearchComponent from "./SearchComponent.astro";
     </h1>
   </a>
   <div class="hidden bg-purple bg-red bg-green bg-blue-light"></div>
-  <SearchComponent />
 </header>
 <style>
   .header-text-shadow {
