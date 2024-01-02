@@ -8,6 +8,7 @@ module.exports = {
     width: {
       "30%": "30%",
       "70%": "70%",
+      full: "100%",
     },
     maxWidth: {
       "4xl": "56rem",
